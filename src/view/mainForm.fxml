@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="566.0" prefWidth="524.0" stylesheets="@mainstyle.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainFormController">
+   <children>
+      <AnchorPane fx:id="controlButtons" prefHeight="45.0" prefWidth="900.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Button fx:id="balanceButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#showBalancePane" prefHeight="45.0" prefWidth="104.0" text="Баланс" />
+            <Button fx:id="paymentsButton" layoutX="104.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#showPaymentsPane" prefHeight="45.0" prefWidth="104.0" text="Списания" />
+            <Button fx:id="contributionsButton" layoutX="208.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#showContributionsPane" prefHeight="45.0" prefWidth="104.0" text="Взносы" />
+            <Button fx:id="refBookButton" layoutX="312.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#showRefBookPane" prefHeight="45.0" prefWidth="104.0" text="Справочники" />
+            <Button fx:id="settingsButton" layoutX="416.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#showSettingsPane" prefHeight="45.0" prefWidth="108.0" text="Настройки" AnchorPane.leftAnchor="416.0" AnchorPane.rightAnchor="0.0" />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="content" layoutY="39.0" prefHeight="527.0" prefWidth="524.0" styleClass="dialogPane" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="39.0">
+         <children>
+            <AnchorPane fx:id="balancePane" prefHeight="200.0" prefWidth="200.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Label layoutX="157.0" layoutY="14.0" text="Текущий баланс в рублях" AnchorPane.topAnchor="1.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="balanceField" alignment="CENTER" layoutX="202.0" layoutY="28.0" prefHeight="30.0" prefWidth="121.0" text="0" AnchorPane.bottomAnchor="469.0" AnchorPane.leftAnchor="202.0" AnchorPane.rightAnchor="201.0" AnchorPane.topAnchor="28.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="179.0" layoutY="66.0" text="История изменений">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <TableView fx:id="balanceTable" layoutY="98.0" prefHeight="422.0" prefWidth="510.0" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="98.0">
+                    <columns>
+                      <TableColumn fx:id="balanceMoneyColumn" prefWidth="256.0" resizable="false" text="Рублей" />
+                      <TableColumn fx:id="balanceDateColumn" prefWidth="229.0" resizable="false" text="Дата" />
+                    </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="contributionsPane" layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Label layoutX="179.0" layoutY="1.0" prefHeight="25.0" prefWidth="167.0" text="Пополнить баланс">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="46.0" layoutY="34.0" text="Сумма">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="234.0" layoutY="34.0" text="Участник">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="contributionsMoneyField" layoutX="15.0" layoutY="52.0" prefHeight="25.0" prefWidth="104.0" />
+                  <ComboBox fx:id="contributionsUserField" layoutX="158.0" layoutY="52.0" prefHeight="25.0" prefWidth="211.0" />
+                  <Button fx:id="contributionsMakeButton" layoutX="403.0" layoutY="52.0" mnemonicParsing="false" onAction="#contributeCash" prefHeight="25.0" prefWidth="108.0" text="Пополнить" />
+                  <Label layoutX="174.0" layoutY="249.0" text="История пополнений">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="163.0" layoutY="92.0" text="Кто давно не пополняет">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <TableView fx:id="contributionsNeedToPayTable" layoutX="26.0" layoutY="120.0" prefHeight="123.0" prefWidth="510.0" AnchorPane.bottomAnchor="284.0" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="120.0">
+                     <columns>
+                        <TableColumn fx:id="contributionsUserNTPColumn" prefWidth="335.0" resizable="false" text="Участник" />
+                        <TableColumn fx:id="contributionsDateNTPColumn" prefWidth="151.0" resizable="false" text="Дата пополнения" />
+                     </columns>
+                  </TableView>
+                  <TableView fx:id="contributionsTable" layoutX="7.0" layoutY="279.0" prefHeight="238.0" prefWidth="510.0" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="279.0">
+                     <columns>
+                        <TableColumn fx:id="contributionsUserColumn" prefWidth="230.0" resizable="false" text="Участник" />
+                        <TableColumn fx:id="contributionsMoneyColumn" prefWidth="143.0" resizable="false" text="Сумма" />
+                        <TableColumn fx:id="contributionsDateColumn" prefWidth="113.0" resizable="false" text="Дата" />
+                     </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="paymentsPane" layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Label layoutX="182.0" layoutY="14.0" text="Списать из баланса" AnchorPane.topAnchor="1.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <TableView fx:id="paymentsTable" layoutX="10.0" layoutY="98.0" prefHeight="422.0" prefWidth="510.0" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="98.0">
+                    <columns>
+                      <TableColumn fx:id="paymentsMoneyColumn" prefWidth="113.0" resizable="false" text="Рублей списано" />
+                      <TableColumn fx:id="paymentsOrgColumn" prefWidth="226.0" resizable="false" text="Организация" />
+                        <TableColumn fx:id="paymentsDateColumn" prefWidth="149.0" resizable="false" text="Дата" />
+                    </columns>
+                  </TableView>
+                  <Label layoutX="186.0" layoutY="69.0" text="История списаний">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="paymentsMoneyField" layoutX="109.0" layoutY="35.0" prefHeight="25.0" prefWidth="104.0" />
+                  <Button fx:id="paymentsAddButton" layoutX="304.0" layoutY="34.0" mnemonicParsing="false" onAction="#makePayment" prefHeight="27.0" prefWidth="75.0" text="Списать" />
+                  <Label layoutX="221.0" layoutY="38.0" text="Руб.">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="refBookPane" layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <TableView fx:id="refBookUsersTable" layoutX="14.0" layoutY="29.0" prefHeight="200.0" prefWidth="510.0" AnchorPane.bottomAnchor="298.0" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="29.0">
+                    <columns>
+                      <TableColumn fx:id="refBookUserColumn" prefWidth="488.0" resizable="false" text="Фамилия имя отчество" />
+                    </columns>
+                  </TableView>
+                  <TableView fx:id="refBookOrgTable" layoutX="14.0" layoutY="269.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="269.0">
+                     <columns>
+                        <TableColumn fx:id="refBookOrgTableNameColumn" prefWidth="172.0" text="Наименование" />
+                        <TableColumn fx:id="refBookOrgTablePhoneColumn" prefWidth="119.0" text="Телефон" />
+                        <TableColumn fx:id="refBookOrgTablePriceColumn" prefWidth="74.0" text="Цена" />
+                        <TableColumn fx:id="refBookOrgTableCommentColumn" prefWidth="123.0" text="Комментарий" />
+                     </columns>
+                  </TableView>
+                  <Label layoutX="161.0" layoutY="14.0" text="Справочник Участников" AnchorPane.topAnchor="1.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="155.0" layoutY="235.0" text="Справочник организаций">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="settingsPane" layoutX="20.0" layoutY="20.0" prefHeight="200.0" prefWidth="200.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <ScrollPane hbarPolicy="NEVER" prefHeight="206.0" prefWidth="484.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" onMouseClicked="#clearSelectionSettingsPane" prefHeight="667.0" prefWidth="507.0">
+                           <children>
+                              <Label layoutX="218.0" layoutY="1.0" text="Участники" AnchorPane.topAnchor="1.0">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Label>
+                              <TableView fx:id="settingsUserTable" layoutX="15.0" layoutY="28.0" onMouseClicked="#selectUserSettingsPane" prefHeight="163.0" prefWidth="474.0" AnchorPane.bottomAnchor="476.0" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="28.0">
+                                <columns>
+                                  <TableColumn fx:id="settingsUserColumn" prefWidth="472.0" resizable="false" text="ФИО" />
+                                </columns>
+                              </TableView>
+                              <Label layoutX="199.0" layoutY="253.0" text="Организация">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="settingsUserAddField" layoutX="10.0" layoutY="214.0" prefHeight="25.0" prefWidth="291.0" />
+                              <Label layoutX="128.0" layoutY="191.0" text="ФИО">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <Button fx:id="settingsUserAddButton" layoutX="314.0" layoutY="214.0" mnemonicParsing="false" onAction="#addEditUser" prefHeight="25.0" prefWidth="89.0" text="Добавить" />
+                              <Label layoutX="112.0" layoutY="447.0" text="Наименование">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="339.0" layoutY="447.0" text="Стоимость в рублях">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="28.0" layoutY="498.0" text="Контактный телефон">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="305.0" layoutY="498.0" text="Комментарий">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <Button fx:id="settingsUserDeleteButton" disable="true" layoutX="422.0" layoutY="214.0" mnemonicParsing="false" onAction="#removeUser" prefHeight="25.0" prefWidth="75.0" text="Удалить" />
+                              <Label layoutX="18.0" layoutY="608.0" prefHeight="27.0" prefWidth="189.0" text="Организация по умолчанию">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <TableView fx:id="settingsOrgTable" layoutX="8.0" layoutY="280.0" onMouseClicked="#selectOrganisation" prefHeight="160.0" prefWidth="493.0" AnchorPane.bottomAnchor="227.0" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="280.0">
+                                <columns>
+                                  <TableColumn fx:id="settingsOrgNameColumn" prefWidth="128.0" text="Наименование" />
+                                    <TableColumn fx:id="settingsOrgPhoneColumn" prefWidth="117.0" text="Телефон" />
+                                  <TableColumn fx:id="settingsOrgPriceColumn" prefWidth="89.0" text="Стоимость" />
+                                    <TableColumn fx:id="settingsOrgCommentColumn" prefWidth="136.0" text="Комментарий" />
+                                </columns>
+                              </TableView>
+                              <TextField fx:id="settingsOrgAddNameField" layoutX="7.0" layoutY="465.0" prefHeight="25.0" prefWidth="307.0" AnchorPane.leftAnchor="7.0" />
+                              <TextField fx:id="settingsOrgAddPriceField" layoutX="349.0" layoutY="465.0" prefHeight="25.0" prefWidth="108.0" />
+                              <TextField fx:id="settingsOrgAddPhoneField" layoutX="7.0" layoutY="518.0" prefHeight="25.0" prefWidth="211.0" AnchorPane.bottomAnchor="124.0" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="289.0" AnchorPane.topAnchor="518.0" />
+                              <TextField fx:id="settingsOrgAddCommentField" layoutX="238.0" layoutY="518.0" prefHeight="25.0" prefWidth="222.0" />
+                              <Button fx:id="settingsOrgAddButton" layoutX="132.0" layoutY="559.0" mnemonicParsing="false" onAction="#addEditOrganisation" prefHeight="25.0" prefWidth="108.0" text="Добавить" />
+                              <Button fx:id="settingsOrgDeleteButton" disable="true" layoutX="267.0" layoutY="559.0" mnemonicParsing="false" onAction="#removeOrganisation" prefHeight="25.0" prefWidth="108.0" text="Удалить" />
+                              <ComboBox fx:id="settingsDefaultOrgButton" layoutX="218.0" layoutY="609.0" prefWidth="150.0" />
+                              <Button layoutX="377.0" layoutY="609.0" mnemonicParsing="false" onAction="#setDefaultOrganisation" prefHeight="25.0" prefWidth="104.0" text="Сохранить" />
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </ScrollPane>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="helloPane" prefHeight="200.0" prefWidth="200.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Label layoutX="29.0" layoutY="237.0" text="Для начала работы выберите раздел из верхнего меню">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="220.0" layoutY="485.0" text="Версия ПО 1.0" />
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="messagePane" prefHeight="566.0" prefWidth="524.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <AnchorPane opacity="0.5" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: black;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Pane layoutX="73.0" layoutY="127.0" prefHeight="312.0" prefWidth="378.0" styleClass="dialogPane">
+                     <children>
+                        <Label layoutX="84.0" layoutY="14.0" text="Сообщение об операции">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="messageOkButton" layoutX="100.0" layoutY="253.0" mnemonicParsing="false" onAction="#hideMessagePane" prefHeight="45.0" prefWidth="178.0" text="ОК" />
+                        <TextArea fx:id="messageTextField" layoutX="14.0" layoutY="41.0" prefHeight="200.0" prefWidth="349.0" wrapText="true" />
+                     </children>
+                  </Pane>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

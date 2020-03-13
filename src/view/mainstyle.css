@@ -1,0 +1,39 @@
+ToggleButton {
+	-fx-background-color: #dddddd ; 
+	-fx-background-radius: 0,0,0,0;
+}
+ToggleButton:selected {
+	-fx-background-color: #a1a1a1; 
+	-fx-background-radius: 0,0,0,0;
+}
+ToggleButton:hover {
+	-fx-background-color: #cccccc;
+	-fx-background-radius: 0,0,0,0;
+	-fx-border-width:0;
+}
+ToggleButton:pressed {
+	-fx-background-color: #666666;
+	-fx-background-radius: 0,0,0,0;
+}
+.dialogPane {
+	-fx-background-color: #eeeeee;
+}
+.button {
+	-fx-background-color: #dddddd ; 
+	-fx-background-radius: 0,0,0,0;
+}
+.button:hover {
+	-fx-background-color: #cccccc;
+	-fx-background-radius: 0,0,0,0;
+	-fx-border-width:0;
+}
+.button:pressed {
+	-fx-background-color: #666666;
+	-fx-background-radius: 0,0,0,0;
+}
+ComboBox {
+	-fx-background-color: #dddddd;
+}
+TextField {
+        -fx-alignment: center;
+}
